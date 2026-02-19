@@ -34,3 +34,14 @@ $ npm run dev
 ```
 
 Check the running application at [http://localhost:3000](http://localhost:3000).
+
+## Notes
+
+### Vulnerabilities
+
+ESLint is pulling a vulnerable version of the Ajv package. ESLint is not compatible with
+the latest versions of Ajv which include the vulnerability fix, so overriding the version
+of Ajv is not a viable option. For now we have to wait until ESLint releases a new package
+version that integrates with the latests versions of Ajv. As per ESLint maintainers, the
+package is not impacted by the vulnerability, so it is safe to ignore the warnings. More
+details can be found [here](https://github.com/eslint/eslint/issues/20508).
