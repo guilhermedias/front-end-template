@@ -1,5 +1,5 @@
+import Header from "@/app/commons/ui/header";
 import { render, screen } from "@testing-library/react";
-import Header from "./header";
 
 describe("Header", () => {
   it("shows the provided content", () => {

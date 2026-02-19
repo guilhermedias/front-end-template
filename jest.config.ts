@@ -1,9 +1,13 @@
 import { Config } from "jest";
+import nextJest from "next/jest.js";
+
+const createJestConfig = nextJest({
+  dir: "./",
+});
 
 const config: Config = {
-  preset: "ts-jest",
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/src/jest.setup.ts"],
 };
 
-export default config;
+export default createJestConfig(config);
