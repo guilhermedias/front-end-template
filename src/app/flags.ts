@@ -1,3 +1,5 @@
+import { createContext } from "react";
+
 export interface Flag {
   name: string;
   value: boolean;
@@ -12,3 +14,5 @@ export function isEnabled(flagName: string, flags: Flag[]) {
 export async function fetchFlags(): Promise<Flag[]> {
   return [{ name: "FANCY_HEADER", value: false }];
 }
+
+export const FlagsContext = createContext<Flag[]>([]);

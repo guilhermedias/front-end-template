@@ -1,24 +1,16 @@
-import { fetchFlags, isEnabled } from "@/app/flags";
-import { useEffect, useState } from "react";
+import { FlagsContext, isEnabled } from "@/app/flags";
+import { useContext } from "react";
 
 interface HeaderProps {
   content: string;
 }
 
 export default function Header({ content }: HeaderProps) {
-  const [displayContent, setDisplayContent] = useState(content);
+  const flags = useContext(FlagsContext);
 
-  useEffect(() => {
-    (async () => {
-      const flags = await fetchFlags();
-
-      const displayContent = isEnabled("FANCY_HEADER", flags)
-        ? `${content} but Fancier`
-        : content;
-
-      setDisplayContent(displayContent);
-    })();
-  }, [content]);
+  const displayContent = isEnabled("FANCY_HEADER", flags)
+    ? `${content} but Fancier`
+    : content;
 
   return <h2>{displayContent}</h2>;
 }
