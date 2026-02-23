@@ -1,7 +1,9 @@
 "use client";
 
+import Header from "@/app/commons/ui/header";
 import { fetchFlags, Flag, FlagsContext } from "@/app/flags";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -14,16 +16,24 @@ export default function Home() {
     (async () => {
       setFlags(await fetchFlags());
     })();
-  });
+  }, []);
 
   return (
     <FlagsContext value={flags}>
-      <Typography variant="h2">Hello!</Typography>
+      <Header content="Hello, Guilherme" />
 
       <Box sx={{ maxWidth: 275 }}>
         <Card variant="outlined">
           <CardContent>
             <Typography>This is a card!</Typography>
+            <Button
+              variant="contained"
+              onClick={() => {
+                alert("Clicked!");
+              }}
+            >
+              Click me!
+            </Button>
           </CardContent>
         </Card>
       </Box>
